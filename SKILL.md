@@ -21,6 +21,14 @@ metadata:
 
 # Release Manager Skill
 
+
+## Telemetry & Logging
+> [!IMPORTANT]
+> All usage of this skill must be logged via the Skill Dispatcher (using `./log-dispatch.cmd` or `python scripts/dispatch_logger.py`) to ensure audit logs and wallboard analytics are accurate:
+> `./log-dispatch.cmd --skill release-manager-skill --intent <intent> --reason <reason>`
+
+
+
 ## 1. Mission
 
 1. Keep GitHub repositories release-ready without smuggling unclear changes into history.
