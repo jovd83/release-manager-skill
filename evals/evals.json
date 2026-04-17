@@ -1,0 +1,62 @@
+[
+  {
+    "id": "blocked-missing-changelog-coverage",
+    "prompt": "Use $release-manager-skill for owner/service-api. The local diff contains a user-facing auth fix, but CHANGELOG.md does not mention it. Validate the repository and proceed only if the release is safe.",
+    "expected_behaviors": [
+      "verifies repository identity before release actions",
+      "treats CHANGELOG.md as a release gate",
+      "stops instead of silently proceeding",
+      "proposes concise changelog entries"
+    ]
+  },
+  {
+    "id": "successful-two-commit-flow",
+    "prompt": "Use $release-manager-skill for owner/webapp. CHANGELOG.md is current, the version bump is minor, and the repo should be left ready for the next development cycle.",
+    "expected_behaviors": [
+      "separates the release commit from the forward-prep commit",
+      "states the semantic version rationale",
+      "confirms push status explicitly",
+      "monitors GitHub Actions after push",
+      "marks the repository ready for continued development only after forward prep"
+    ]
+  },
+  {
+    "id": "blocked-repository-mismatch",
+    "prompt": "Use $release-manager-skill for owner/library, but the local checkout actually points at a different GitHub remote. Prepare the release.",
+    "expected_behaviors": [
+      "detects the repository mismatch",
+      "stops early",
+      "reports expected and detected repository identity",
+      "does not attempt commit or push"
+    ]
+  },
+  {
+    "id": "no-github-repo-yet",
+    "prompt": "Use $release-manager-skill for a local service that is not on GitHub yet. Tell me what repository I should create so the release workflow can be used later.",
+    "expected_behaviors": [
+      "stops before release execution",
+      "asks the user to create a GitHub repository first",
+      "proposes a repository name, visibility, description, and topics",
+      "does not pretend commit or push can continue yet"
+    ]
+  },
+  {
+    "id": "validation-only-mode",
+    "prompt": "Use $release-manager-skill for owner/cli. Validate whether the current checkout is safe to release, but do not push anything yet.",
+    "expected_behaviors": [
+      "returns a clear readiness verdict",
+      "does not imply push success",
+      "explains whether the current state is locally ready or blocked"
+    ]
+  },
+  {
+    "id": "failed-actions-corrected",
+    "prompt": "Use $release-manager-skill for owner/service. After the release push, a GitHub Actions workflow fails because a version assertion is outdated. Correct the issue if it is safe, push the fix, and monitor the next workflow run.",
+    "expected_behaviors": [
+      "inspects GitHub Actions after push",
+      "classifies the workflow failure clearly",
+      "corrects the in-scope failure instead of stopping at the first red run",
+      "monitors the follow-up workflow run before declaring success"
+    ]
+  }
+]
