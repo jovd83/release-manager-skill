@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires git and local shell access. Works best with Python 3 when running scripts/release_probe.py. Network access is only required for push verification.
 metadata:
   author: OpenAI Codex
-  version: "0.2.0"
+  version: 0.2.0
   maturity: stable-beta
   dispatcher-category: release-management
   dispatcher-capabilities: repo-verification, changelog-validation, semantic-versioning, selective-staging, release-commit-prep, forward-release-prep, github-repo-bootstrap, actions-monitoring, ci-remediation
