@@ -70,10 +70,10 @@ class Validator:
             else:
                 self.info(f"SKILL.md contains {header}")
 
-        # Extract version from frontmatter
-        version_match = re.search(r'version:\s*"([^"]+)"', content)
+        # Extract version from frontmatter (support quoted or unquoted)
+        version_match = re.search(r'version:\s*(?:"([^"]+)"|([0-9.]+))', content)
         if version_match:
-            version = version_match.group(1)
+            version = version_match.group(1) or version_match.group(2)
             self.info(f"SKILL.md version: {version}")
         else:
             self.error("SKILL.md frontmatter missing version")
