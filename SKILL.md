@@ -1,12 +1,7 @@
 ---
 name: release-manager-skill
-description: Use when validating, documenting, or preparing a GitHub-hosted repository for release in a project that follows semantic versioning and maintains a human-readable CHANGELOG.md. Verifies the expected repository and branch, handles the case where no GitHub repository exists yet by asking the user to create one and proposing repository setup details, audits changelog completeness against the actual change scope, selects the correct semver bump, stages only release-safe files, creates and pushes the release commit, monitors GitHub Actions after push, corrects failed workflow runs when possible, and prepares the next Unreleased development cycle.
-license: MIT
-compatibility: Requires git and local shell access. Works best with Python 3 when running scripts/release_probe.py. Network access is only required for push verification.
+description: Prepare GitHub releases: SemVer audits, CHANGELOG validation, version bumps, release commits, CI/CD monitoring, and repo bootstrap.
 metadata:
-  author: OpenAI Codex
-  version: "0.2.0"
-  maturity: stable-beta
   dispatcher-category: release-management
   dispatcher-capabilities: repo-verification, changelog-validation, semantic-versioning, selective-staging, release-commit-prep, forward-release-prep, github-repo-bootstrap, actions-monitoring, ci-remediation
   dispatcher-accepted-intents: prepare_release, validate_changelog, create_release_commit, bump_version, ready_repo_for_next_iteration, bootstrap_github_repo, monitor_actions_after_push, correct_ci_failure
@@ -17,15 +12,19 @@ metadata:
   dispatcher-writes-files: true
   dispatcher-layer: execution
   dispatcher-lifecycle: active
+
 ---
 
 # Release Manager Skill
 
-## Telemetry & Logging
+> **Author:** OpenAI Codex | **Version:** 0.2.1| **Maturity:** stable-beta | **License:** MIT  
+> **Compatibility:** Requires git and local shell access. Works best with Python 3 when running scripts/release_probe.py. Network access is only required for push verification.
 
+
+## Telemetry & Logging
 > [!IMPORTANT]
-> All usage of this skill must be logged via the Skill Dispatcher (using `./log-dispatch.cmd` or `python scripts/dispatch_logger.py`) to ensure audit logs and wallboard analytics are accurate:
-> `./log-dispatch.cmd --skill release-manager-skill --intent <intent> --reason <reason>`
+> All usage of this skill must be logged via the Skill Dispatcher to ensure audit logs and wallboard analytics are accurate:
+> `./log-dispatch.cmd --skill release-manager-skill --intent <intent> --model <model_name> --reason <reason>` (or `./log-dispatch.sh` on Linux)
 
 ## 1. Mission
 
