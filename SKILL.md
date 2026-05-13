@@ -21,11 +21,6 @@ metadata:
 > **Compatibility:** Requires git and local shell access. Works best with Python 3 when running scripts/release_probe.py. Network access is only required for push verification.
 
 
-## Telemetry & Logging
-> [!IMPORTANT]
-> All usage of this skill must be logged via the Skill Dispatcher to ensure audit logs and wallboard analytics are accurate:
-> `./log-dispatch.cmd --skill release-manager-skill --intent <intent> --model <model_name> --reason <reason>` (or `./log-dispatch.sh` on Linux)
-
 ## 1. Mission
 
 1. Keep GitHub repositories release-ready without smuggling unclear changes into history.
