@@ -1,25 +1,24 @@
 ---
 name: release-manager-skill
-description: Prepare GitHub releases: SemVer audits, CHANGELOG validation, version bumps, release commits, CI/CD monitoring, and repo bootstrap.
+version: 0.2.1
+description: "Validate and prepare GitHub releases. Trigger for: SemVer changelogs, version bumps, release commits, CI/CD monitoring, and repo bootstrap."
 metadata:
   dispatcher-category: release-management
-  dispatcher-capabilities: repo-verification, changelog-validation, semantic-versioning, selective-staging, release-commit-prep, forward-release-prep, github-repo-bootstrap, actions-monitoring, ci-remediation
-  dispatcher-accepted-intents: prepare_release, validate_changelog, create_release_commit, bump_version, ready_repo_for_next_iteration, bootstrap_github_repo, monitor_actions_after_push, correct_ci_failure
+  dispatcher-capabilities: repo-verify, changelog-audit, semver-bump, selective-stage, release-prep, forward-prep, repo-bootstrap, actions-monitor, ci-remediate
+  dispatcher-accepted-intents: prepare_release, validate_changelog, create_release_commit, bump_version, prep_next_cycle, bootstrap_repo, monitor_ci_actions, correct_ci_failure
   dispatcher-input-artifacts: repo_path, git_state, changelog, version_files, release_scope
-  dispatcher-output-artifacts: release_summary, changelog_patch, version_bump_plan, release_readiness_report, repo_bootstrap_plan, ci_status_report
-  dispatcher-stack-tags: git, github, release, semver, changelog, keep-a-changelog
+  dispatcher-output-artifacts: release_summary, changelog_patch, bump_plan, readiness_report, bootstrap_plan, ci_report
+  dispatcher-stack-tags: git, github, release, semver, changelog
   dispatcher-risk: medium
   dispatcher-writes-files: true
   dispatcher-layer: execution
   dispatcher-lifecycle: active
-
 ---
 
 # Release Manager Skill
 
-> **Author:** OpenAI Codex | **Version:** 0.2.1| **Maturity:** stable-beta | **License:** MIT  
-> **Compatibility:** Requires git and local shell access. Works best with Python 3 when running scripts/release_probe.py. Network access is only required for push verification.
-
+> **Author:** OpenAI Codex &nbsp;|&nbsp; **Version:** 0.2.1 &nbsp;|&nbsp; **Maturity:** stable-beta &nbsp;|&nbsp; **License:** MIT  
+> **Compatibility:** Requires git and local shell access. Works best with Python 3 when running `scripts/release_probe.py`. Network access is only required for push verification.
 
 ## 1. Mission
 

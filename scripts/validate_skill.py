@@ -70,13 +70,17 @@ class Validator:
             else:
                 self.info(f"SKILL.md contains {header}")
 
-        # Extract version from frontmatter (support quoted or unquoted)
+        # Extract version from frontmatter or from body (fallback)
         version_match = re.search(r'version:\s*(?:"([^"]+)"|([0-9.]+))', content)
+        if not version_match:
+            # Fallback to body version marker: **Version:** 0.2.1
+            version_match = re.search(r'\*\*Version:\*\*\s*([0-9.]+)', content)
+
         if version_match:
             version = version_match.group(1) or version_match.group(2)
             self.info(f"SKILL.md version: {version}")
         else:
-            self.error("SKILL.md frontmatter missing version")
+            self.error("SKILL.md missing version (check frontmatter 'version:' or body '**Version:**')")
 
     def check_readme_badges(self):
         readme_path = self.root / "README.md"
