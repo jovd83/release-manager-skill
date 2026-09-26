@@ -17,7 +17,7 @@ metadata:
 
 # Release Manager Skill
 
-> **Author:** OpenAI Codex &nbsp;|&nbsp; **Version:** 0.2.1 &nbsp;|&nbsp; **Maturity:** stable-beta &nbsp;|&nbsp; **License:** MIT  
+> **Author:** jovd83 &nbsp;|&nbsp; **Version:** 0.2.1 &nbsp;|&nbsp; **Maturity:** stable-beta &nbsp;|&nbsp; **License:** MIT  
 > **Compatibility:** Requires git and local shell access. Works best with Python 3 when running `scripts/release_probe.py`. Network access is only required for push verification.
 
 ## 1. Mission
