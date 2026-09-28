@@ -4,6 +4,15 @@ All notable changes to this skill will be documented in this file.
 
 The format is based on Keep a Changelog and this project uses Semantic Versioning.
 
+## [0.3.0] - 2026-09-28
+
+### Added
+- Companion agents that run this workflow in an isolated context and stop before every push, tag or GitHub release: `agents/claude-code/release-manager.md` (Claude Code, preloads the skill) and `agents/codex/release-manager.toml` (Codex custom agent).
+
+### Changed
+- Invoke-only: `disable-model-invocation: true` for Claude Code and `allow_implicit_invocation: false` for Codex. The skill commits and pushes, so it runs when asked, through the agents or `/release-manager-skill`.
+- `metadata` carries author and version. The README version badge is realigned (it said 0.2.0), and the optional-integrations list points at the agent's own memory instead of the retired shared-memory skill.
+
 ## [0.2.1] - 2026-04-30
 
 ### Changed

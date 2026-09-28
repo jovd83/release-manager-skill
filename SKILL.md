@@ -1,6 +1,6 @@
 ---
 name: release-manager-skill
-version: 0.2.1
+version: 0.3.0
 description: "Validate and prepare GitHub releases. Trigger for: SemVer changelogs, version bumps, release commits, CI/CD monitoring, and repo bootstrap."
 metadata:
   dispatcher-category: release-management
@@ -13,11 +13,14 @@ metadata:
   dispatcher-writes-files: true
   dispatcher-layer: execution
   dispatcher-lifecycle: active
+  author: jovd83
+  version: "0.3.0"
+disable-model-invocation: true
 ---
 
 # Release Manager Skill
 
-> **Author:** jovd83 &nbsp;|&nbsp; **Version:** 0.2.1 &nbsp;|&nbsp; **Maturity:** stable-beta &nbsp;|&nbsp; **License:** MIT  
+> **Author:** jovd83 &nbsp;|&nbsp; **Version:** 0.3.0 &nbsp;|&nbsp; **Maturity:** stable-beta &nbsp;|&nbsp; **License:** MIT  
 > **Compatibility:** Requires git and local shell access. Works best with Python 3 when running `scripts/release_probe.py`. Network access is only required for push verification.
 
 ## 1. Mission
@@ -316,6 +319,7 @@ gh run view <run-id> --log-failed
 6. Use [assets/changelog-entry-template.md](assets/changelog-entry-template.md) when drafting concise changelog entries.
 7. Use `scripts/release_probe.py` for deterministic repository inspection.
 8. Use `tests/test_release_probe.py` and `evals/evals.json` when validating changes to the skill.
+9. Companion agents run this workflow in an isolated context, one repository or a batch, and stop before every push, tag or release: `agents/claude-code/release-manager.md` for Claude Code (preloads this skill) and `agents/codex/release-manager.toml` for Codex. Prefer them there; call this skill directly in other harnesses.
 
 ## 19. Examples
 

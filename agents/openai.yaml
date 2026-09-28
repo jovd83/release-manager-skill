@@ -5,4 +5,4 @@ interface:
   default_prompt: "Use $release-manager-skill to verify a GitHub repository, validate CHANGELOG.md coverage, prepare the correct version bump, and leave the repo ready for the next Unreleased cycle."
 
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

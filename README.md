@@ -1,6 +1,6 @@
 # GitHub Release Manager Agent Skill
 
-[![version](https://img.shields.io/badge/version-0.2.0-blue)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-0.3.0-blue)](CHANGELOG.md)
 [![status](https://img.shields.io/badge/status-stable--beta-f0ad4e)](SKILL.md)
 [![category](https://img.shields.io/badge/category-release--management-0a7ea4)](SKILL.md)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -125,9 +125,20 @@ These can improve the workflow but are not required:
 
 - `gh` CLI for GitHub-specific checks or follow-up release work
 - CI pipelines that run the probe helper or tests
-- a separate shared-memory skill for organization-wide release policy
+- the agent's own memory (CLAUDE.md, AGENTS.md) for organization-wide release policy
 
 These integrations are optional and are not embedded as hard dependencies in the current implementation.
+
+### Companion agents
+
+The skill is invoke-only (`/release-manager-skill` in Claude Code, `$release-manager-skill` in Codex). For day-to-day publishing, two companion agents run the same workflow in their own context, one repository or a batch, and stop before every push, tag or GitHub release so you approve it in the main conversation:
+
+| Harness | File | Install |
+|---|---|---|
+| Claude Code | `agents/claude-code/release-manager.md` | copy to `~/.claude/agents/` |
+| OpenAI Codex | `agents/codex/release-manager.toml` | copy to `~/.codex/agents/` (needs the `multi_agent` feature) |
+
+Both run the pre-ship gate (dependency, API-contract, advisory and secret checks), push fast-forward only, and watch GitHub Actions after each approved push.
 
 ## Running the helper
 
