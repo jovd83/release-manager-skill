@@ -7,7 +7,7 @@ The format is based on Keep a Changelog and this project uses Semantic Versionin
 ## [0.3.0] - 2026-09-28
 
 ### Added
-- Companion agents that run this workflow in an isolated context and stop before every push, tag or GitHub release: `agents/claude-code/release-manager.md` (Claude Code, preloads the skill) and `agents/codex/release-manager.toml` (Codex custom agent).
+- Companion agents that run this workflow in an isolated context and stop before every push, tag or GitHub release: `agents/claude-code/release-manager.md` (Claude Code, preloads the skill) and `agents/codex/release-manager.toml` (Codex custom agent). The Codex agent inherits its permissions from the session that spawns it; pushing needs a session with network access.
 
 ### Changed
 - Invoke-only: `disable-model-invocation: true` for Claude Code and `allow_implicit_invocation: false` for Codex. The skill commits and pushes, so it runs when asked, through the agents or `/release-manager-skill`.
